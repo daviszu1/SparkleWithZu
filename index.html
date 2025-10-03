@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#e6f3ef" />
+  <title>CalmPrompt — Mental Health Prompt Generator</title>
+  <style>
+    :root {
+      --bg: #f6fbfa; --panel:#fff; --ink:#243331; --brand:#3aa3a0; --brand-2:#6bc2c0;
+      --radius:14px; --shadow:0 10px 30px rgba(0,0,0,.06);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Inter, Arial;
+    }
+    body {margin:0;background:var(--bg);color:var(--ink);}
+    .wrap {min-height:100vh;display:grid;grid-template-rows:auto 1fr auto;}
+    header {background:#e6f3ef;padding:1rem;display:flex;justify-content:space-between;align-items:center;}
+    .logo {width:36px;height:36px;border-radius:10px;background:conic-gradient(from 210deg,var(--brand),var(--brand-2),var(--brand));}
+    main {max-width:1200px;margin:20px auto;padding:0 20px;display:grid;gap:20px;grid-template-columns:320px 1fr;}
+    @media(max-width:960px){main{grid-template-columns:1fr}}
+    .card {background:var(--panel);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;}
+    select,input,textarea{width:100%;margin-bottom:12px;padding:10px;border-radius:8px;border:1px solid #ccc;}
+    .btn {padding:10px 16px;border:0;border-radius:12px;background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#043836;font-weight:600;cursor:pointer;}
+    .result {background:#fafafa;padding:12px;border-radius:var(--radius);min-height:140px;white-space:pre-wrap;}
+    footer {font-size:13px;color:#555;padding:20px;max-width:1200px;margin:0 auto;}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="logo"></div><strong>CalmPrompt</strong>
+    </div>
+    <button class="btn" id="generate">✨ Generate</button>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Controls</h2>
+      <label>Topic
+        <select id="topic">
+          <option>Anxiety Relief</option>
+          <option>Stress Management</option>
+          <option>Sleep Hygiene</option>
+        </select>
+      </label>
+      <label>Prompt type
+        <select id="type">
+          <option>Tips</option>
+          <option>Affirmations</option>
+          <option>Journaling</option>
+        </select>
+      </label>
+      <label>Tone
+        <select id="tone">
+          <option>Warm & Compassionate</option>
+          <option>Motivational but Gentle</option>
+        </select>
+      </label>
+      <label>Audience (optional)<input id="audience" type="text" placeholder="e.g., college students"/></label>
+      <label>Extra context<textarea id="context"></textarea></label>
+    </section>
+
+    <section class="card">
+      <h2>Preview</h2>
+      <div id="result" class="result">Ready to generate…</div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Important:</strong> Content generated here is for general well-being and peer-support. It is not medical advice. If in crisis, call your local emergency number immediately.</p>
+  </footer>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const result = $('result');
+function buildPrompt(){
+  const topic=$('topic').value, type=$('type').value, tone=$('tone').value;
+  const audience=$('audience').value||'a general audience', ctx=$('context').value.trim();
+  return `Write ${type.toLowerCase()} for ${topic}, tone: ${tone}, audience: ${audience}. ${ctx?`Context: ${ctx}.`:''} End with a gentle encouragement.`;
+}
+$('generate').addEventListener('click',()=>{result.textContent=buildPrompt();});
+</script>
+</body>
+</html>
