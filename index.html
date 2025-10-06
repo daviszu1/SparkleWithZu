@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SparkleWithZu — Ask Away (Safe Version)</title>
+  <meta name="theme-color" content="#8e5bd6" />
+  <style>
+    :root{
+      --bg:#faf7ff; --panel:#ffffff; --ink:#231a38; --muted:#6e5f8f;
+      --brand:#8e5bd6; --accent:#f3eaff; --radius:14px;
+      --shadow:0 8px 24px rgba(35,16,64,.08);
+      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, Roboto, Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family:var(--font); background:var(--bg); color:var(--ink)}
+    header{ text-align:center; padding:22px 16px; background:#f5e9ff; border-bottom:1px solid #efe6ff }
+    header h1{ font-family:"Comic Sans MS","Brush Script MT",cursive; font-size:40px; color:#6a0dad; margin:0 }
+    .wrap{ max-width:1000px; margin:18px auto; padding:0 16px }
+    .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:12px 0 18px }
+    .gallery img{ width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px; border:1px solid #efe6ff; box-shadow:var(--shadow) }
+    .card{ background:var(--panel); border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid #efe6ff; padding:16px; margin-top:14px }
+    h2{ margin:6px 0 12px }
+    p{ margin:0 0 10px }
+    label{ display:block; font-size:14px; color:var(--muted); margin-bottom:6px }
+    input, select, textarea{
+      width:100%; padding:11px 12px; border-radius:12px; border:1px solid #e4d8ff; outline:none; background:#fff
+    }
+    textarea{ min-height:110px; resize:vertical }
+    .grid{ display:grid; gap:12px }
+    .grid.cols-2{ grid-template-columns:1fr 1fr }
+    @media (max-width:680px){ .grid.cols-2{ grid-template-columns:1fr } }
+    .btn{ appearance:none; border:0; border-radius:12px; padding:12px 16px; font-weight:800; cursor:pointer;
+      background:linear-gradient(180deg,#8e5bd6,#a47ff2); color:#fff; box-shadow:0 10px 24px rgba(142,91,214,.35) }
+    .muted{ color:var(--muted); font-size:13px }
+    .notice{ background:#fbf8ff; border:1px dashed #e4d8ff; border-radius:12px; padding:12px; font-size:14px }
+    .paygrid{ display:grid; grid-template-columns:1fr 1fr; gap:10px }
+    @media (max-width:520px){ .paygrid{ grid-template-columns:1fr } }
+    .pay{ display:flex; align-items:center; justify-content:center; gap:10px; padding:12px; border-radius:12px; font-weight:900; color:#fff; text-decoration:none }
+    .venmo{ background:linear-gradient(180deg,#c7a8ff,#8e5bd6) }
+    .paypal{ background:linear-gradient(180deg,#23a1f0,#1977c2) }
+    footer{ text-align:center; padding:20px; color:#6e5f8f; font-size:13px }
+    noscript{ display:block; background:#fff1f2; color:#7a1320; padding:10px 12px; border-radius:12px; border:1px solid #ffd0d6; margin-top:12px }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>✨ Ask Away… ✨</h1>
+  </header>
+
+  <div class="wrap">
+    <!-- Gallery -->
+    <section class="gallery" aria-label="Calm gallery">
+      <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=1600&auto=format&fit=crop" alt="Happy sunshine" />
+      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1600&auto=format&fit=crop" alt="Tropical beach" />
+      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1600&auto=format&fit=crop" alt="Fall trees" />
+    </section>
+
+    <!-- How it works + payments -->
+    <section class="card">
+      <h2>How this works</h2>
+      <p>Fill out the <strong>questionnaire</strong> and click <strong>SEND</strong>. You’ll get a reply by <strong>email or text within 24–48 hours</strong>.</p>
+      <div class="notice" style="margin-top:8px">
+        🎁 First reply is <strong>free</strong>.<br>
+        After that, each reply is just <strong>$1</strong>. Please support via Venmo or PayPal so we can keep helping.
+      </div>
+      <div class="paygrid" style="margin-top:10px">
+        <a class="pay venmo" href="https://venmo.com/u/SparkleWithZu" target="_blank" rel="noopener">Pay $1 on Venmo @SparkleWithZu</a>
+        <a class="pay paypal" href="https://www.paypal.com/donate/?business=zelo3939@yahoo.com&no_recurring=0&currency_code=USD&amount=1.00" target="_blank" rel="noopener">Pay $1 on PayPal</a>
+      </div>
+    </section>
+
+    <!-- Questionnaire -->
+    <section class="card">
+      <h2>Questionnaire</h2>
+      <!-- Mailto-only SAFE fallback form: NO JavaScript required -->
+      <form action="mailto:zelo3939@yahoo.com" method="post" enctype="text/plain">
+        <div class="grid cols-2">
+          <div>
+            <label for="topic">Topic</label>
+            <select id="topic" name="Topic" required>
+              <option value="">Choose a topic…</option>
+              <option>Breakup</option>
+              <option>Friend problems</option>
+              <option>Sleep issues</option>
+              <option>Grief & loss</option>
+              <option>Feeling lonely</option>
+              <option>Family conflict</option>
+              <option>Job stress</option>
+              <option>Anxiety about the future</option>
+            </select>
+          </div>
+          <div>
+            <label for="type">Type of support</label>
+            <select id="type" name="Type of support" required>
+              <option value="">Choose a type…</option>
+              <option>Advice</option>
+              <option>Breathing exercise</option>
+              <option>Affirmations</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="details">Tell us what’s going on (a few lines)</label>
+          <textarea id="details" name="Details" required placeholder="What would you like help with? Any context that matters."></textarea>
+        </div>
+
+        <div class="grid cols-2">
+          <div>
+            <label for="email">Your email (so we can reply)</label>
+            <input id="email" name="Email" type="email" required placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="phone">Your phone (optional for text reply)</label>
+            <input id="phone" name="Phone" type="tel" placeholder="(###) ###‑####" />
+          </div>
+        </div>
+
+        <div style="margin-top:8px">
+          <button type="submit" class="btn">✨ SEND</button>
+        </div>
+
+        <p class="muted" style="margin-top:10px">
+          When you press SEND, your email app will open with all your answers filled in. Just press <strong>Send</strong> in your email app.
+        </p>
+      </form>
+
+      <noscript>
+        If your browser has JavaScript turned off, this page still works using your email app.
+      </noscript>
+    </section>
+  </div>
+
+  <footer>© <span id="year"></span> SparkleWithZu — All hearts reserved 💜</footer>
+
+  <script>
+    // only sets the year; no other JS used to avoid crashes
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
