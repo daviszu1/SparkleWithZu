@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ask Me Anything</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f3ff;
+      --card: #ffffff;
+      --ink: #000000;
+      --accent: #8b5cf6;
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    header {
+      text-align: center;
+      padding: 28px 16px 8px;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 56px;
+      line-height: 1.05;
+      color: var(--ink);
+      margin: 0;
+    }
+    header p.tagline {
+      margin: 6px 0 18px;
+      font-size: 16px;    /* smaller so it's not crowded */
+      color: #444;
+    }
+    .gallery {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 8px 16px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      display: block;
+      filter: saturate(1.2) contrast(1.06);
+      transition: transform .25s ease, box-shadow .25s ease;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .gallery img:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+    }
+    @media (max-width: 940px) {
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      header h1 { font-size: 44px; }
+    }
+    @media (max-width: 520px) {
+      .gallery { grid-template-columns: 1fr; }
+      .gallery img { height: 200px; }
+      header h1 { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ask Me Anything</h1>
+    <p class="tagline">Your safe place for honest advice, anytime.</p>
+  </header>
+
+  <section class="gallery" aria-label="Romance in the snow">
+    <img src="assets/snow1.jpg" alt="Romance in the snow under an umbrella">
+    <img src="assets/snow2.jpg" alt="Couple in snowy trees">
+    <img src="assets/snow3.jpg" alt="Winter kiss in the city">
+    <img src="assets/snow4.jpg" alt="Playful snowy moment">
+  </section>
+</body>
+</html>
